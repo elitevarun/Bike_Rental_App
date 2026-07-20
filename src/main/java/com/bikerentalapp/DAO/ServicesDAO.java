@@ -1,7 +1,9 @@
 package com.bikerentalapp.DAO;
 
-import java.security.Provider.Service;
+
 import java.util.List;
+
+import com.bikerentalapp.DTO.Service;
 
 
 public interface ServicesDAO {
