@@ -12,6 +12,7 @@ public class Service {
 	private BigDecimal serviceCost;
 	private String remarks;
 	private Date nextServiceDate;
+	
 	public Integer getServiceId() {
 		return serviceId;
 	}
