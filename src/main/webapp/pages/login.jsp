@@ -54,7 +54,7 @@
 
 					</p>
 
-					<form action="../LoginServlet" method="post"
+					<form action="../login" method="post"
 						class="mt-10 space-y-6">
 
 						<div>
@@ -84,7 +84,7 @@
 
 						</div>
 
-						<button
+						<button type="submit"
 							class="w-full bg-orange-500 hover:bg-orange-600 transition py-4 rounded-xl text-white font-semibold text-lg">
 
 							Login</button>

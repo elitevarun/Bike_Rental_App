@@ -1,3 +1,4 @@
+<%@page import="com.bikerentalapp.DTO.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -28,6 +29,12 @@ tailwind.config = {
 }
 </script>
 
+
+<!-- User Session -->
+<%
+User user = (User) session.getAttribute("user");
+%>
+
 <nav
 	class="fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-md shadow-lg border-b border-slate-700">
 
@@ -37,9 +44,9 @@ tailwind.config = {
 
 			<!-- Logo -->
 
-			<a href="${pageContext.request.contextPath}/index.jsp" class="flex items-center gap-3"> <!-- Replace logo later -->
-
-				<img src="../assets/images/logo.png"
+			<a href="${pageContext.request.contextPath}/index.jsp"
+				class="flex items-center gap-3"> <!-- Replace logo later --> <img
+				src="../assets/images/logo.png"
 				class="h-11 w-11 rounded-full object-cover bg-white p-1">
 
 				<div>
@@ -73,15 +80,39 @@ tailwind.config = {
 
 			<!-- Buttons -->
 
-			<div class="hidden lg:flex gap-4">
+			<div class="hidden lg:flex items-center gap-4">
+
+				<%
+				if (user == null) {
+				%>
 
 				<a href="${pageContext.request.contextPath}/pages/login.jsp"
 					class="px-5 py-2 border border-orange-500 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition">
 
 					Login </a> <a href="${pageContext.request.contextPath}/pages/register.jsp"
-					class="px-5 py-2 rounded-full bg-orange-500 text-white hover:bg-orange-600 transition shadow-lg">
+					class="px-5 py-2 rounded-full bg-orange-500 text-white hover:bg-orange-600 transition">
 
 					Register </a>
+
+				<%
+				} else {
+				%>
+
+				<span class="text-white font-medium"> Welcome, <span
+					class="text-orange-500"> <%=user.getFirstName()%>
+				</span>
+
+				</span> <a href="${pageContext.request.contextPath}/pages/userdashboard.jsp"
+					class="px-5 py-2 border border-orange-500 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition">
+
+					Dashboard </a> <a href="${pageContext.request.contextPath}/logout"
+					class="px-5 py-2 bg-red-500 rounded-full text-white hover:bg-red-600 transition">
+
+					Logout </a>
+
+				<%
+				}
+				%>
 
 			</div>
 

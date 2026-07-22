@@ -8,7 +8,7 @@ public class User {
 	private String phone;
 	private String password;
 	private String address;
-	private Integer drivingLicenseNo;
+	private String drivingLicenseNo;
 	
 	
 	public Integer getUserId() {
@@ -53,11 +53,18 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Integer getDrivingLicenseNo() {
+	public String getDrivingLicenseNo() {
 		return drivingLicenseNo;
 	}
-	public void setDrivingLicenseNo(Integer drivingLicenseNo) {
+	public void setDrivingLicenseNo(String drivingLicenseNo) {
 		this.drivingLicenseNo = drivingLicenseNo;
 	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", phone=" + phone + ", password=" + password + ", address=" + address + ", drivingLicenseNo="
+				+ drivingLicenseNo + "]";
+	}
+	
 	
 }

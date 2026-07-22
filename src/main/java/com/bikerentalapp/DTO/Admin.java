@@ -39,5 +39,10 @@ public class Admin {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	@Override
+	public String toString() {
+		return "Admin [adminId=" + adminId + ", name=" + name + ", email=" + email + ", password=" + password
+				+ ", role=" + role + "]";
+	}
 	
 }

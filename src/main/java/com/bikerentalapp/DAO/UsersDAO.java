@@ -8,6 +8,8 @@ public interface UsersDAO {
 	
 	void registerUser (User u);
 	
+	User findByMailAndPassword(String mail, String password);
+	
 	User findById (Integer userId);
 	
 	List<User> findAll();

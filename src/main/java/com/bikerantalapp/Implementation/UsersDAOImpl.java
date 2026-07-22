@@ -11,11 +11,12 @@ import com.bikerentalapp.DAO.UsersDAO;
 import com.bikerentalapp.DTO.User;
 import com.bikerentalapp.utitly.Connector;
 
-public class UsersDAO_Impl implements UsersDAO {
+
+public class UsersDAOImpl implements UsersDAO {
 
 	private Connection con;
 
-	public UsersDAO_Impl() {
+	public UsersDAOImpl() {
 		this.con = Connector.requestConnection();
 	}
 
@@ -34,7 +35,7 @@ public class UsersDAO_Impl implements UsersDAO {
 			ps.setString(4, u.getPhone());
 			ps.setString(5, u.getPassword());
 			ps.setString(6, u.getAddress());
-			ps.setInt(7, u.getDrivingLicenseNo());
+			ps.setString(7, u.getDrivingLicenseNo());
 
 			int res = ps.executeUpdate();
 
@@ -75,7 +76,7 @@ public class UsersDAO_Impl implements UsersDAO {
 				u.setPhone(rs.getString("phone"));
 				u.setPassword(rs.getString("password"));
 				u.setAddress(rs.getString("address"));
-				u.setDrivingLicenseNo(rs.getInt("driving_license_no"));
+				u.setDrivingLicenseNo(rs.getString("driving_license_no"));
 			}
 
 		} catch (SQLException e) {
@@ -109,7 +110,7 @@ public class UsersDAO_Impl implements UsersDAO {
 				u.setPhone(rs.getString("phone"));
 				u.setPassword(rs.getString("password"));
 				u.setAddress(rs.getString("address"));
-				u.setDrivingLicenseNo(rs.getInt("driving_license_no"));
+				u.setDrivingLicenseNo(rs.getString("driving_license_no"));
 
 				userList.add(u);
 			}
@@ -125,8 +126,8 @@ public class UsersDAO_Impl implements UsersDAO {
 	@Override
 	public void updateUser(User u) {
 
-		String query = "UPDATE USERS SET first_name=?, last_name=?, email=?, "
-				+ "phone=?, password=?, address=?, driving_license_no=? "
+		String query = "UPDATE USERS SET first_name=?, last_name=?,  "
+				+ "phone=?, address=?, driving_license_no=? "
 				+ "WHERE user_id=?";
 
 		try {
@@ -134,13 +135,12 @@ public class UsersDAO_Impl implements UsersDAO {
 
 			ps.setString(1, u.getFirstName());
 			ps.setString(2, u.getLastName());
-			ps.setString(3, u.getEmail());
-			ps.setString(4, u.getPhone());
-			ps.setString(5, u.getPassword());
-			ps.setString(6, u.getAddress());
-			ps.setInt(7, u.getDrivingLicenseNo());
-
-			ps.setInt(8, u.getUserId());
+//			ps.setString(3, u.getEmail());
+			ps.setString(3, u.getPhone());
+//			ps.setString(5, u.getPassword());
+			ps.setString(4, u.getAddress());
+			ps.setString(5, u.getDrivingLicenseNo());
+			ps.setInt(6, u.getUserId());
 
 			int res = ps.executeUpdate();
 
@@ -166,16 +166,42 @@ public class UsersDAO_Impl implements UsersDAO {
 
 			ps.setInt(1, u.getUserId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("User deleted successfully");
-			} else {
-				System.out.println("User not found");
-			}
+		    ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	
+	//find by email and password
+	@Override
+	public User findByMailAndPassword(String mail, String password) {
+		
+		String query = "select * from users where email=? and password =?";
+		User u = null;
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, mail);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				u = new User();
+				u.setUserId(rs.getInt("user_id"));
+				u.setFirstName(rs.getString("first_name"));
+				u.setLastName(rs.getString("last_name"));
+				u.setEmail(rs.getString("email"));
+				u.setPhone(rs.getString("phone"));
+				u.setPassword(rs.getString("password"));
+				u.setAddress(rs.getString("address"));
+				u.setDrivingLicenseNo(rs.getString("driving_license_no"));
+				
+			}
+		} catch (SQLException e3) {
+
+			e3.printStackTrace();
+		}
+		return u;
 	}
 }

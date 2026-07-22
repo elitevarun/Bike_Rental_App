@@ -11,11 +11,11 @@ import com.bikerentalapp.DAO.VehicleImagesDAO;
 import com.bikerentalapp.DTO.VehicleImage;
 import com.bikerentalapp.utitly.Connector;
 
-public class VehicleImagesDAO_Impl implements VehicleImagesDAO {
+public class VehicleImagesDAOImpl implements VehicleImagesDAO {
 
 	private Connection con;
 
-	public VehicleImagesDAO_Impl() {
+	public VehicleImagesDAOImpl() {
 		this.con = Connector.requestConnection();
 	}
 
