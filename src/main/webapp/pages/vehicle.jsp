@@ -273,11 +273,11 @@ List<Vehicle> vehicleList = vdao.findAll();
 
 						<div class="grid grid-cols-2 gap-3 mt-8">
 
-							<a
-								href="${pageContext.request.contextPath}/pages/booking.jsp?id=<%=vehicle.getVehicleId()%>"
+							<!--  <a
+								href="${pageContext.request.contextPath}/pages/booking.jsp?id="
 								class="text-center border border-orange-500 text-orange-500 py-3 rounded-xl hover:bg-orange-500 hover:text-white transition">
 
-								Details </a>
+								Details </a>   -->
 
 							<%
 							if (vehicle.getAvailable()) {

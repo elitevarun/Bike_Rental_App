@@ -1,4 +1,7 @@
 
+<%@page import="com.bikerentalapp.DTO.Vehicle"%>
+<%@page import="com.bikerantalapp.Implementation.VehiclesDAOImpl"%>
+<%@page import="com.bikerentalapp.DAO.VehiclesDAO"%>
 <%@page import="com.bikerentalapp.DTO.User"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -405,8 +408,11 @@ if(user == null){
             <!-- Bike Image -->
 
             <div>
-
-                <img src="../assets/images/bike1.jpg"
+<%
+			VehiclesDAO vdao = new VehiclesDAOImpl();
+Vehicle v=vdao.findById(4);
+			%>
+                <img src="<%=v.getImagePath() %>"
                      class="w-full h-full object-cover">
 
             </div>
