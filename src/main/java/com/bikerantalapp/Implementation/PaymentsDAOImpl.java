@@ -29,7 +29,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 
 			ps.setInt(1, p.getBookingId());
-			ps.setBigDecimal(2, p.getAmount());
+			ps.setDouble(2, p.getAmount());
 			ps.setString(3, p.getPaymentMode());
 			ps.setString(4, p.getPaymentStatus());
 			ps.setDate(5, p.getPaymentDate());
@@ -68,7 +68,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 
 				p.setPaymentId(rs.getInt("payment_id"));
 				p.setBookingId(rs.getInt("booking_id"));
-				p.setAmount(rs.getBigDecimal("amount"));
+				p.setAmount(rs.getDouble("amount"));
 				p.setPaymentMode(rs.getString("payment_mode"));
 				p.setPaymentStatus(rs.getString("payment_status"));
 				p.setPaymentDate(rs.getDate("payment_date"));
@@ -100,7 +100,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 
 				p.setPaymentId(rs.getInt("payment_id"));
 				p.setBookingId(rs.getInt("booking_id"));
-				p.setAmount(rs.getBigDecimal("amount"));
+				p.setAmount(rs.getDouble("amount"));
 				p.setPaymentMode(rs.getString("payment_mode"));
 				p.setPaymentStatus(rs.getString("payment_status"));
 				p.setPaymentDate(rs.getDate("payment_date"));
@@ -127,7 +127,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 
 			ps.setInt(1, p.getBookingId());
-			ps.setBigDecimal(2, p.getAmount());
+			ps.setDouble(2, p.getAmount());
 			ps.setString(3, p.getPaymentMode());
 			ps.setString(4, p.getPaymentStatus());
 			ps.setDate(5, p.getPaymentDate());

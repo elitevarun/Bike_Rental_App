@@ -33,24 +33,26 @@ public class Login extends HttpServlet {
 			resp.sendRedirect("./pages/userdashboard.jsp");
 		} 
 		else if (a != null) {
-			if (a.getEmail().equals(req.getParameter("email")) && a.getPassword().equals(req.getParameter("password"))
-					&& a.getRole().equalsIgnoreCase("super_admin")) {
-				session.setAttribute("superAdmin", a);
-				resp.sendRedirect("./pages/superadmindashboard.jsp");
-			} 
-			else if (a.getEmail().equals(req.getParameter("email"))
-					&& a.getPassword().equals(req.getParameter("password"))
-					&& a.getRole().equalsIgnoreCase("manager")) {
-				session.setAttribute("managerAdmin", a);
-				resp.sendRedirect("./pages/manageradmindashboard.jsp");
-			} 
-			else if (a.getEmail().equals(req.getParameter("email"))
+//			if (a.getEmail().equals(req.getParameter("email")) && a.getPassword().equals(req.getParameter("password"))
+//					&& a.getRole().equalsIgnoreCase("super_admin")) {
+//				session.setAttribute("superAdmin", a);
+//				resp.sendRedirect("./pages/superadmindashboard.jsp");
+//			} 
+//			else if (a.getEmail().equals(req.getParameter("email"))
+//					&& a.getPassword().equals(req.getParameter("password"))
+//					&& a.getRole().equalsIgnoreCase("manager")) {
+//				session.setAttribute("managerAdmin", a);
+//				resp.sendRedirect("./pages/manageradmindashboard.jsp");
+//			} 
+			if (a.getEmail().equals(req.getParameter("email"))
 					&& a.getPassword().equals(req.getParameter("password")) 
 					&& a.getRole().equalsIgnoreCase("admin")) {
 				session.setAttribute("admin", a);
-				resp.sendRedirect("./pages/admindashboard.jsp");
+				resp.sendRedirect("./admin/admindashboard.jsp");
 			}
 		}
+
+		
 
 		else {
 			req.setAttribute("msg", "Data Not Found");

@@ -23,7 +23,7 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 	@Override
 	public void registerVehicle(Vehicle v) {
 
-		String query = "INSERT INTO VEHICLES VALUES(0,?,?,?,?,?,?,?,?)";
+		String query = "INSERT INTO VEHICLE VALUES(0,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -33,9 +33,10 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 			ps.setString(3, v.getRegistrationNo());
 			ps.setString(4, v.getFuelType());
 			ps.setInt(5, v.getTopSpeed());
-			ps.setBigDecimal(6, v.getPricePerDay());
-			ps.setBigDecimal(7, v.getDepositFee());
+			ps.setDouble(6, v.getPricePerDay());
+			ps.setDouble(7, v.getDepositFee());
 			ps.setBoolean(8, v.getAvailable());
+			ps.setString(9, v.getImagePath());
 
 			int res = ps.executeUpdate();
 
@@ -54,7 +55,7 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 	@Override
 	public Vehicle findById(Integer vehicleId) {
 
-		String query = "SELECT * FROM VEHICLES WHERE vehicle_id=?";
+		String query = "SELECT * FROM VEHICLE WHERE vehicle_id=?";
 
 		Vehicle v = null;
 
@@ -75,9 +76,10 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 				v.setRegistrationNo(rs.getString("registration_no"));
 				v.setFuelType(rs.getString("fuel_type"));
 				v.setTopSpeed(rs.getInt("top_speed"));
-				v.setPricePerDay(rs.getBigDecimal("price_per_day"));
-				v.setDepositFee(rs.getBigDecimal("deposit_fee"));
+				v.setPricePerDay(rs.getDouble("price_per_day"));
+				v.setDepositFee(rs.getDouble("deposit_fee"));
 				v.setAvailable(rs.getBoolean("available"));
+				v.setImagePath(rs.getString("image_path"));
 			}
 
 		} catch (SQLException e) {
@@ -91,7 +93,7 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 	@Override
 	public List<Vehicle> findAll() {
 
-		String query = "SELECT * FROM VEHICLES";
+		String query = "SELECT * FROM VEHICLE";
 
 		List<Vehicle> vehicleList = new ArrayList<>();
 
@@ -110,10 +112,10 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 				v.setRegistrationNo(rs.getString("registration_no"));
 				v.setFuelType(rs.getString("fuel_type"));
 				v.setTopSpeed(rs.getInt("top_speed"));
-				v.setPricePerDay(rs.getBigDecimal("price_per_day"));
-				v.setDepositFee(rs.getBigDecimal("deposit_fee"));
+				v.setPricePerDay(rs.getDouble("price_per_day"));
+				v.setDepositFee(rs.getDouble("deposit_fee"));
 				v.setAvailable(rs.getBoolean("available"));
-
+				v.setImagePath(rs.getString("image_path"));
 				vehicleList.add(v);
 			}
 
@@ -130,7 +132,7 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 
 		String query = "UPDATE VEHICLES SET vehicle_type=?, model=?, "
 				+ "registration_no=?, fuel_type=?, top_speed=?, "
-				+ "price_per_day=?, deposit_fee=?, available=? "
+				+ "price_per_day=?, deposit_fee=?, available=?, image_path=? "
 				+ "WHERE vehicle_id=?";
 
 		try {
@@ -141,11 +143,12 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 			ps.setString(3, v.getRegistrationNo());
 			ps.setString(4, v.getFuelType());
 			ps.setInt(5, v.getTopSpeed());
-			ps.setBigDecimal(6, v.getPricePerDay());
-			ps.setBigDecimal(7, v.getDepositFee());
+			ps.setDouble(6, v.getPricePerDay());
+			ps.setDouble(7, v.getDepositFee());
 			ps.setBoolean(8, v.getAvailable());
+		    ps.setString(9, v.getImagePath());
 
-			ps.setInt(9, v.getVehicleId());
+			ps.setInt(10, v.getVehicleId());
 
 			int res = ps.executeUpdate();
 

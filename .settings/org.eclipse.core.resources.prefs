@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/admin/adminBookings.jsp=UTF-8
+encoding//src/main/webapp/admin/adminUsers.jsp=UTF-8
+encoding//src/main/webapp/admin/adminVehicles.jsp=UTF-8
+encoding//src/main/webapp/pages/mybooking.jsp=UTF-8
 encoding/<project>=UTF-8

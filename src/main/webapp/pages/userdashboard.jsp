@@ -59,7 +59,7 @@ if(user == null){
 							bookings, update your profile and explore our premium collection
 							of bikes.</p>
 
-						<a href="../BikeController?action=viewAll"
+						<a href="${pageContext.request.contextPath}/pages/vehicle.jsp?action=viewAll"
 							class="inline-block mt-8 bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold hover:scale-105 transition">
 
 							Browse Bikes → </a>
@@ -126,7 +126,7 @@ if(user == null){
 
 				<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-					<a href="../BikeController?action=viewAll"
+					<a href="${pageContext.request.contextPath}/pages/vehicle.jsp?action=viewAll"
 						class="bg-slate-900 rounded-2xl p-8 hover:bg-orange-500 transition">
 
 						<div class="text-5xl">🏍</div>
@@ -135,7 +135,7 @@ if(user == null){
 
 						<p class="text-slate-300 mt-3">View all available bikes.</p>
 
-					</a> <a href="../BookingController?action=myBookings"
+					</a> <a href="${pageContext.request.contextPath}/pages/mybooking.jsp?action=myBookings"
 						class="bg-slate-900 rounded-2xl p-8 hover:bg-orange-500 transition">
 
 						<div class="text-5xl">📖</div>
@@ -144,7 +144,7 @@ if(user == null){
 
 						<p class="text-slate-300 mt-3">Check your bookings.</p>
 
-					</a> <a href="editProfile.jsp"
+					</a> <a href="${pageContext.request.contextPath}/pages/updateuser.jsp"
 						class="bg-slate-900 rounded-2xl p-8 hover:bg-orange-500 transition">
 
 						<div class="text-5xl">👤</div>
@@ -389,7 +389,7 @@ if(user == null){
 
         </h2>
 
-        <a href="../BookingController?action=myBookings"
+        <a href="${pageContext.request.contextPath}/pages/mybooking.jsp?action=myBookings"
            class="text-orange-500 hover:underline">
 
             View All Bookings →

@@ -20,10 +20,10 @@ public class Logout extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          HttpSession session=req.getSession(false);
          User user=(User)session.getAttribute("user");
-         Admin superAdmin=(Admin)session.getAttribute("superAdmin");
-         Admin managerAdmin=(Admin)session.getAttribute("managerAdmin");
+//         Admin superAdmin=(Admin)session.getAttribute("superAdmin");
+//         Admin managerAdmin=(Admin)session.getAttribute("managerAdmin");
          Admin admin=(Admin)session.getAttribute("admin");
-         if(user!=null || superAdmin!=null || managerAdmin!=null || admin!=null) {
+         if(user!=null|| admin!=null) {
         	 session.invalidate();
         
      		

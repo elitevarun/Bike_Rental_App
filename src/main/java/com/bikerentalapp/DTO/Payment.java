@@ -7,7 +7,7 @@ public class Payment {
 
 	private Integer paymentId;
 	private Integer bookingId;
-	private BigDecimal amount;
+	private Double amount;
 	private String paymentMode;
 	private String paymentStatus;
 	private Date paymentDate;
@@ -25,10 +25,10 @@ public class Payment {
 	public void setBookingId(Integer bookingId) {
 		this.bookingId = bookingId;
 	}
-	public BigDecimal getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 	public String getPaymentMode() {

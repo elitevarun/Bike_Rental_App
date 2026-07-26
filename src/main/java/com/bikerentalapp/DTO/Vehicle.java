@@ -1,6 +1,6 @@
 package com.bikerentalapp.DTO;
 
-import java.math.BigDecimal;
+
 
 public class Vehicle {
 	private Integer vehicleId;
@@ -9,11 +9,18 @@ public class Vehicle {
 	private String registrationNo;
 	private String fuelType;
 	private Integer topSpeed;
-	private BigDecimal pricePerDay;
-	private BigDecimal depositFee;
+	private Double pricePerDay;
+	private Double depositFee;
 	private Boolean available;
+	private String imagePath;
 	
 	
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public Integer getVehicleId() {
 		return vehicleId;
 	}
@@ -50,16 +57,16 @@ public class Vehicle {
 	public void setTopSpeed(Integer topSpeed) {
 		this.topSpeed = topSpeed;
 	}
-	public BigDecimal getPricePerDay() {
+	public Double getPricePerDay() {
 		return pricePerDay;
 	}
-	public void setPricePerDay(BigDecimal pricePerDay) {
+	public void setPricePerDay(Double pricePerDay) {
 		this.pricePerDay = pricePerDay;
 	}
-	public BigDecimal getDepositFee() {
+	public Double getDepositFee() {
 		return depositFee;
 	}
-	public void setDepositFee(BigDecimal depositFee) {
+	public void setDepositFee(Double depositFee) {
 		this.depositFee = depositFee;
 	}
 	public Boolean getAvailable() {
@@ -67,6 +74,13 @@ public class Vehicle {
 	}
 	public void setAvailable(Boolean available) {
 		this.available = available;
+	}
+	@Override
+	public String toString() {
+		return "Vehicle [vehicleId=" + vehicleId + ", vehicleType=" + vehicleType + ", model=" + model
+				+ ", registrationNo=" + registrationNo + ", fuelType=" + fuelType + ", topSpeed=" + topSpeed
+				+ ", pricePerDay=" + pricePerDay + ", depositFee=" + depositFee + ", available=" + available
+				+ ", imagePath=" + imagePath + "]";
 	}
 	
 	

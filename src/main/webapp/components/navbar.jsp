@@ -68,9 +68,11 @@ User user = (User) session.getAttribute("user");
 
 				<a href="${pageContext.request.contextPath}/index.jsp"
 					class="text-gray-300 hover:text-orange-500 transition font-medium">
-					Home </a> <a href="../pages/bikes.jsp"
+					Home </a> 
+					<a href="${pageContext.request.contextPath}/pages/vehicle.jsp"
 					class="text-gray-300 hover:text-orange-500 transition font-medium">
-					Bikes </a> <a href="../pages/about.jsp"
+					Bikes </a>
+					 <a href="../pages/about.jsp"
 					class="text-gray-300 hover:text-orange-500 transition font-medium">
 					About </a> <a href="../pages/contact.jsp"
 					class="text-gray-300 hover:text-orange-500 transition font-medium">

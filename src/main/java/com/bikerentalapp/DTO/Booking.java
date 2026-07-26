@@ -1,6 +1,6 @@
 package com.bikerentalapp.DTO;
 
-import java.math.BigDecimal;
+
 import java.sql.Date;
 
 
@@ -12,9 +12,49 @@ public class Booking {
 	private Date startDate;
 	private Date endDate;
 	private Integer totalDays;
-	private BigDecimal totalAmount;
+	private Double totalAmount;
+	private String bookingStatus;
+	private String model;
+	private String firstName;
+	private String lastName;
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getModel() {
+	    return model;
+	}
+
+	public void setModel(String model) {
+	    this.model = model;
+	}
 	
+	public Double getTotalAmount() {
+		return totalAmount;
+	}
 	
+	public String getBookingStatus() {
+		return bookingStatus;
+	}
+	public void setBookingStatus(String bookingStatus) {
+		this.bookingStatus = bookingStatus;
+	}
+	public void setTotalAmount(Double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
 	public Integer getBookingId() {
 		return bookingId;
 	}
@@ -51,12 +91,7 @@ public class Booking {
 	public void setTotalDays(Integer totalDays) {
 		this.totalDays = totalDays;
 	}
-	public BigDecimal getTotalAmount() {
-		return totalAmount;
-	}
-	public void setTotalAmount(BigDecimal totalAmount) {
-		this.totalAmount = totalAmount;
-	}
+
 	
 	
 }
