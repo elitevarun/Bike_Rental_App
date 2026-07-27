@@ -45,8 +45,10 @@ User user = (User) session.getAttribute("user");
 			<!-- Logo -->
 
 			<a href="${pageContext.request.contextPath}/index.jsp"
-				class="flex items-center gap-3"> <!-- Replace logo later --> <img
-				src="../assets/images/logo.png"
+				class="flex items-center gap-3">
+				
+				 <!-- Replace logo later --> <img
+				src="https://i.ibb.co/GS5LTnq/bikerentallogo.png"
 				class="h-11 w-11 rounded-full object-cover bg-white p-1">
 
 				<div>

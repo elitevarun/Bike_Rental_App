@@ -1,4 +1,8 @@
 
+<%@page import="com.bikerantalapp.Implementation.VehiclesDAOImpl"%>
+<%@page import="com.bikerentalapp.DAO.VehiclesDAO"%>
+<%@page import="com.bikerantalapp.Implementation.UsersDAOImpl"%>
+<%@page import="com.bikerentalapp.DAO.UsersDAO"%>
 <%@page import="com.bikerentalapp.DAO.PaymentsDAO"%>
 <%@page import="com.bikerantalapp.Implementation.PaymentsDAOImpl"%>
 <%@page import="com.bikerantalapp.Implementation.BookingsDAOImpl"%>
@@ -16,6 +20,16 @@ if (admin == null) {
 	response.sendRedirect(request.getContextPath() +"/pages/login.jsp");
 	return;
 }
+
+
+
+BookingsDAO bdao = new BookingsDAOImpl();
+
+UsersDAO udao=new UsersDAOImpl(); 
+
+VehiclesDAO vdao=new VehiclesDAOImpl(); 
+
+PaymentsDAO pdao = new PaymentsDAOImpl();
 %>
 
 <!DOCTYPE html>
@@ -124,6 +138,14 @@ if (admin == null) {
 				<div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
 
 					<!-- Users -->
+               
+<%
+
+   Long countUsers = udao.findAll()
+           .stream()
+           .count();
+%>
+
 
 					<div class="bg-slate-900 rounded-3xl p-8 shadow-xl">
 
@@ -131,11 +153,19 @@ if (admin == null) {
 
 						<p class="text-slate-400 mt-6">Total Users</p>
 
-						<h2 class="text-5xl font-bold text-orange-500 mt-4">150</h2>
+						<h2 class="text-5xl font-bold text-orange-500 mt-4"><%=countUsers %></h2>
 
 					</div>
 
 					<!-- Vehicles -->
+
+<%
+
+Long countVehicles = vdao.findAll()
+.stream()
+.count();
+%>
+
 
 					<div class="bg-slate-900 rounded-3xl p-8 shadow-xl">
 
@@ -143,11 +173,21 @@ if (admin == null) {
 
 						<p class="text-slate-400 mt-6">Vehicles</p>
 
-						<h2 class="text-5xl font-bold text-orange-500 mt-4">15</h2>
+						<h2 class="text-5xl font-bold text-orange-500 mt-4"><%=countVehicles %></h2>
 
 					</div>
 
 					<!-- Bookings -->
+<%
+
+
+Long countBookings =bdao.findAll()
+.stream()
+.count();
+
+%>
+
+
 
 					<div class="bg-slate-900 rounded-3xl p-8 shadow-xl">
 
@@ -155,11 +195,20 @@ if (admin == null) {
 
 						<p class="text-slate-400 mt-6">Bookings</p>
 
-						<h2 class="text-5xl font-bold text-orange-500 mt-4">42</h2>
+						<h2 class="text-5xl font-bold text-orange-500 mt-4"><%=countBookings %></h2>
 
 					</div>
 
 					<!-- Payments -->
+<%
+
+
+Long countPayments =pdao.findAll()
+.stream()
+.count();
+
+%>
+
 
 					<div class="bg-slate-900 rounded-3xl p-8 shadow-xl">
 
@@ -167,7 +216,7 @@ if (admin == null) {
 
 						<p class="text-slate-400 mt-6">Payments</p>
 
-						<h2 class="text-5xl font-bold text-orange-500 mt-4">39</h2>
+						<h2 class="text-5xl font-bold text-orange-500 mt-4"><%=countPayments %></h2>
 
 					</div>
 
@@ -223,7 +272,7 @@ if (admin == null) {
 
 
 				<%
-				BookingsDAO bdao = new BookingsDAOImpl();
+				
 
 				List<Booking> allBookingList = bdao.getBooking();
 
@@ -390,7 +439,7 @@ if (admin == null) {
 
 
 				<%
-				PaymentsDAO pdao = new PaymentsDAOImpl();
+		
 				List<Payment> paymentList = pdao.findAll();
 
 				if (paymentList == null) {

@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 
                 <div class="flex items-center gap-3 mb-5">
 
-                    <img src="../assets/images/logo.png"
+                    <img src="https://i.ibb.co/GS5LTnq/bikerentallogo.png"
                          alt="Logo"
                          class="w-12 h-12 rounded-full bg-white p-1">
 

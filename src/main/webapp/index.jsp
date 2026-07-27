@@ -23,107 +23,82 @@
 	<!-- ================= HERO SECTION ================= -->
 
 	<section
-		class="relative min-h-screen flex items-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    class="relative min-h-screen flex items-center overflow-hidden bg-slate-950">
 
-		<!-- Background Blur -->
-		<div
-			class="absolute w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-[140px] -top-32 -left-32">
-		</div>
+    <!-- Full Background Image -->
+    <img
+        src="https://i.ibb.co/0pNPwT6B/heroimage.png"
+        alt="Bike"
+        class="absolute inset-0 w-full h-full object-cover">
 
-		<div
-			class="absolute w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-[120px] bottom-0 right-0">
-		</div>
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black/70"></div>
 
-		<div
-			class="max-w-7xl mx-auto px-6 pt-32 pb-20 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+    <!-- Background Blur Effects -->
+    <div
+        class="absolute w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-[140px] -top-32 -left-32">
+    </div>
 
-			<!-- LEFT CONTENT -->
+    <div
+        class="absolute w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-[120px] bottom-0 right-0">
+    </div>
 
-			<div>
+    <!-- Hero Content -->
+    <div
+        class="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
 
-				<span
-					class="inline-block px-5 py-2 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 mb-8">
+        <span
+            class="inline-block px-5 py-2 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 mb-8">
+            🏍 Premium Bike Rentals
+        </span>
 
-					🏍 Premium Bike Rentals </span>
+        <h1
+            class="text-5xl md:text-7xl font-extrabold leading-tight text-white">
+            Ride <span class="text-orange-500">Without</span> Limits.
+        </h1>
 
-				<h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+        <p
+            class="mt-8 text-slate-300 text-lg leading-8 max-w-2xl">
+            Experience premium motorcycles at affordable prices. Whether it's a
+            weekend getaway, city ride or mountain adventure, we've got the
+            perfect bike waiting for you.
+        </p>
 
-					Ride <span class="text-orange-500"> Without </span> Limits.
+        <!-- Buttons -->
+        <div class="flex flex-wrap gap-5 mt-10">
 
-				</h1>
+            <a href="${pageContext.request.contextPath}/pages/vehicle.jsp"
+                class="bg-orange-500 hover:bg-orange-600 transition px-8 py-4 rounded-xl font-semibold shadow-xl text-white">
+                Explore Bikes →
+            </a>
 
-				<p class="mt-8 text-slate-300 text-lg leading-8 max-w-xl">
+       
 
-					Experience premium motorcycles at affordable prices. Whether it's a
-					weekend getaway, city ride or mountain adventure, we've got the
-					perfect bike waiting for you.</p>
+        </div>
 
-				<!-- Buttons -->
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-8 mt-16 max-w-lg">
 
-				<div class="flex flex-wrap gap-5 mt-10">
+            <div>
+                <h2 class="text-4xl font-bold text-orange-500">500+</h2>
+                <p class="text-slate-300 mt-2">Premium Bikes</p>
+            </div>
 
-					<a href="pages/bikes.jsp"
-						class="bg-orange-500 hover:bg-orange-600 transition px-8 py-4 rounded-xl font-semibold shadow-xl">
+            <div>
+                <h2 class="text-4xl font-bold text-orange-500">10K+</h2>
+                <p class="text-slate-300 mt-2">Happy Riders</p>
+            </div>
 
-						Explore Bikes → </a> <a href="#why-us"
-						class="border border-slate-600 hover:border-orange-500 hover:text-orange-500 transition px-8 py-4 rounded-xl">
+            <div>
+                <h2 class="text-4xl font-bold text-orange-500">50+</h2>
+                <p class="text-slate-300 mt-2">Locations</p>
+            </div>
 
-						Learn More </a>
+        </div>
 
-				</div>
+    </div>
 
-				<!-- Stats -->
-
-				<div class="grid grid-cols-3 gap-8 mt-16">
-
-					<div>
-
-						<h2 class="text-4xl font-bold text-orange-500">500+</h2>
-
-						<p class="text-slate-400 mt-2">Premium Bikes</p>
-
-					</div>
-
-					<div>
-
-						<h2 class="text-4xl font-bold text-orange-500">10K+</h2>
-
-						<p class="text-slate-400 mt-2">Happy Riders</p>
-
-					</div>
-
-					<div>
-
-						<h2 class="text-4xl font-bold text-orange-500">50+</h2>
-
-						<p class="text-slate-400 mt-2">Locations</p>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<!-- RIGHT CONTENT -->
-
-			<div class="relative flex justify-center">
-
-				<!-- Orange Circle -->
-
-				<div
-					class="absolute w-[520px] h-[520px] rounded-full bg-orange-500/20 blur-3xl">
-				</div>
-
-				<!-- Bike Image -->
-
-				<img src="assets/images/hero-bike.png" alt="Bike"
-					class="relative z-10 w-full max-w-2xl hover:scale-105 transition duration-700">
-
-			</div>
-
-		</div>
-
-	</section>
+</section>
 
 	<!-- END HERO -->
 
