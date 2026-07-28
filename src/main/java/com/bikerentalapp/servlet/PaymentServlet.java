@@ -1,6 +1,7 @@
 package com.bikerentalapp.servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import com.bikerantalapp.Implementation.BookingsDAOImpl;
 import com.bikerantalapp.Implementation.PaymentsDAOImpl;
@@ -25,14 +26,13 @@ public class PaymentServlet extends HttpServlet {
 	      p.setBookingId(Integer.parseInt(req.getParameter("bookingId")));
 	      p.setAmount(Double.parseDouble(req.getParameter("amount")));
 	      p.setPaymentMode(req.getParameter("paymentMode"));
+	      p.setPaymentStatus(req.getParameter("status"));
+	      p.setPaymentDate(LocalDateTime.parse(req.getParameter("payment_date")));
 	      pdao.registerPayment(p);
 	      
-	      req.setAttribute("mgs", "paymentSuccess");
-	      req.getRequestDispatcher("/pages/mybooking.jsp").forward(req, resp);
-	      
-	      
-
-	
+	    
+	      resp.sendRedirect(req.getContextPath()+"/pages/mybooking.jsp?msg=paymentSuccess");
+	      	
 	}
 
 }

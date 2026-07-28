@@ -34,14 +34,8 @@ public class BookingsDAOImpl implements BookingsDAO {
 			ps.setDate(4, b.getEndDate());
 			ps.setInt(5, b.getTotalDays());
 			ps.setDouble(6, b.getTotalAmount());
-            ps.setString(7, b.getBookingStatus());
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Booking registered successfully");
-			} else {
-				System.out.println("Booking registration failed");
-			}
+			ps.setString(7, b.getBookingStatus());
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -124,8 +118,7 @@ public class BookingsDAOImpl implements BookingsDAO {
 	public void updateBooking(Booking b) {
 
 		String query = "UPDATE BOOKING SET user_id=?, vehicle_id=?, "
-				+ "start_date=?, end_date=?, total_days=?, total_amount=?,booking_status=? "
-				+ "WHERE booking_id=?";
+				+ "start_date=?, end_date=?, total_days=?, total_amount=?,booking_status=? " + "WHERE booking_id=?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -139,13 +132,7 @@ public class BookingsDAOImpl implements BookingsDAO {
 			ps.setString(7, b.getBookingStatus());
 			ps.setInt(8, b.getBookingId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Booking updated successfully");
-			} else {
-				System.out.println("Booking not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -163,13 +150,7 @@ public class BookingsDAOImpl implements BookingsDAO {
 
 			ps.setInt(1, b.getBookingId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Booking deleted successfully");
-			} else {
-				System.out.println("Booking not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -179,106 +160,95 @@ public class BookingsDAOImpl implements BookingsDAO {
 	@Override
 	public List<Booking> getBookingByUser(Integer userId) {
 
-	    String query = "SELECT "
-	            + "b.booking_id, "
-	            + "b.vehicle_id, "
-	            + "v.model, "
-	            + "b.start_date, "
-	            + "b.end_date, "
-	            + "b.total_days, "
-	            + "b.total_amount, "
-	            + "b.booking_status "
-	            + "FROM booking b "
-	            + "JOIN vehicle v "
-	            + "ON b.vehicle_id = v.vehicle_id "
-	            + "WHERE b.user_id = ? ";
+		String query = "SELECT " + "b.booking_id, " + "b.vehicle_id, " + "v.model, " + "b.start_date, " + "b.end_date, "
+				+ "b.total_days, " + "b.total_amount, " + "b.booking_status " + "FROM booking b " + "JOIN vehicle v "
+				+ "ON b.vehicle_id = v.vehicle_id " + "WHERE b.user_id = ? ";
 
-	    List<Booking> bookingList = new ArrayList<>();
+		List<Booking> bookingList = new ArrayList<>();
 
-	    try (PreparedStatement ps = con.prepareStatement(query)) {
+		try (PreparedStatement ps = con.prepareStatement(query)) {
 
-	        ps.setInt(1, userId);
+			ps.setInt(1, userId);
 
-	        try (ResultSet rs = ps.executeQuery()) {
+			try (ResultSet rs = ps.executeQuery()) {
 
-	            while (rs.next()) {
+				while (rs.next()) {
 
-	                Booking b = new Booking();
+					Booking b = new Booking();
 
-	                b.setBookingId(rs.getInt("booking_id"));
-	                b.setVehicleId(rs.getInt("vehicle_id"));
-	                b.setModel(rs.getString("model"));
-	                b.setStartDate(rs.getDate("start_date"));
-	                b.setEndDate(rs.getDate("end_date"));
-	                b.setTotalDays(rs.getInt("total_days"));
-	                b.setTotalAmount(rs.getDouble("total_amount"));
-	                b.setBookingStatus(rs.getString("booking_status"));
+					b.setBookingId(rs.getInt("booking_id"));
+					b.setVehicleId(rs.getInt("vehicle_id"));
+					b.setModel(rs.getString("model"));
+					b.setStartDate(rs.getDate("start_date"));
+					b.setEndDate(rs.getDate("end_date"));
+					b.setTotalDays(rs.getInt("total_days"));
+					b.setTotalAmount(rs.getDouble("total_amount"));
+					b.setBookingStatus(rs.getString("booking_status"));
 
-	                bookingList.add(b);
-	            }
-	        }
+					bookingList.add(b);
+				}
+			}
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-	    return bookingList;
+		return bookingList;
 	}
-	
-	
-	
+
 	@Override
 	public List<Booking> getBooking() {
 
-	    String query = "SELECT "
-	    	+	"b.booking_id, "
-	    	+	"b.vehicle_id, "
-	    	+	"u.first_name, "
-	    	+	"u.last_name, "
-	    	+	"v.model, "
-	    	+	"b.start_date, "
-	    	+	"b.end_date, "
-	    	+	"b.total_amount,"
-	    	+	"b.total_days,"
-	    	+	"b.booking_status "
-	    	+	"FROM booking b "
-	    	+	"JOIN users u ON b.user_id=u.user_id "
-	    	+	"JOIN vehicle v ON b.vehicle_id=v.vehicle_id; ";
+		String query = "SELECT " + "b.booking_id, " + "b.vehicle_id, " + "u.first_name, " + "u.last_name, "
+				+ "v.model, " + "b.start_date, " + "b.end_date, " + "b.total_amount," + "b.total_days,"
+				+ "b.booking_status " + "FROM booking b " + "JOIN users u ON b.user_id=u.user_id "
+				+ "JOIN vehicle v ON b.vehicle_id=v.vehicle_id; ";
 
-	    List<Booking> allBookingList = new ArrayList<>();
+		List<Booking> allBookingList = new ArrayList<>();
 
-	    try {
-	    	PreparedStatement ps = con.prepareStatement(query);
-	    	ResultSet rs = ps.executeQuery();
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
 
-	       
+			while (rs.next()) {
 
-	            while (rs.next()) {
+				Booking b = new Booking();
 
-	                Booking b = new Booking();
+				b.setBookingId(rs.getInt("booking_id"));
+				b.setVehicleId(rs.getInt("vehicle_id"));
+				b.setModel(rs.getString("model"));
+				b.setFirstName(rs.getString("first_name"));
+				b.setLastName(rs.getString("last_name"));
+				b.setStartDate(rs.getDate("start_date"));
+				b.setEndDate(rs.getDate("end_date"));
+				b.setTotalDays(rs.getInt("total_days"));
+				b.setTotalAmount(rs.getDouble("total_amount"));
+				b.setBookingStatus(rs.getString("booking_status"));
 
-	                b.setBookingId(rs.getInt("booking_id"));
-	                b.setVehicleId(rs.getInt("vehicle_id"));
-	                b.setModel(rs.getString("model"));
-	                b.setFirstName(rs.getString("first_name"));
-	                b.setLastName(rs.getString("last_name"));
-	                b.setStartDate(rs.getDate("start_date"));
-	                b.setEndDate(rs.getDate("end_date"));
-	                b.setTotalDays(rs.getInt("total_days"));
-	                b.setTotalAmount(rs.getDouble("total_amount"));
-	                b.setBookingStatus(rs.getString("booking_status"));
+				allBookingList.add(b);
+			}
 
-	                allBookingList.add(b);
-	            }
-	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-	    } 
-	    catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-
-	    return allBookingList;
+		return allBookingList;
 	}
 
+	@Override
+	public void udpateBookingStatus(Integer bookingId, String status) {
+		String query = "UPDATE booking SET  booking_status=? where booking_id=? ";
+
+		try {
+
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, status);
+			ps.setInt(2, bookingId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 	@Override
 	public void registerPayment(Payment p) {
 
-		String query = "INSERT INTO PAYMENT VALUES(0,?,?,?,?,?)";
+		String query = "INSERT INTO PAYMENT VALUES(0,?,?,?,?,?) ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -32,15 +33,9 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 			ps.setDouble(2, p.getAmount());
 			ps.setString(3, p.getPaymentMode());
 			ps.setString(4, p.getPaymentStatus());
-			ps.setDate(5, p.getPaymentDate());
+			ps.setObject(5, p.getPaymentDate());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Payment registered successfully");
-			} else {
-				System.out.println("Payment registration failed");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -51,8 +46,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 	@Override
 	public Payment findById(Integer paymentId) {
 
-		String query = "SELECT * FROM PAYMENT WHERE payment_id=?";
-
+		String query = "SELECT * FROM PAYMENT WHERE payment_id=? ";
 		Payment p = null;
 
 		try {
@@ -71,7 +65,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 				p.setAmount(rs.getDouble("amount"));
 				p.setPaymentMode(rs.getString("payment_mode"));
 				p.setPaymentStatus(rs.getString("payment_status"));
-				p.setPaymentDate(rs.getDate("payment_date"));
+				p.setPaymentDate(rs.getObject("payment_date", LocalDateTime.class));
 			}
 
 		} catch (SQLException e) {
@@ -103,7 +97,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 				p.setAmount(rs.getDouble("amount"));
 				p.setPaymentMode(rs.getString("payment_mode"));
 				p.setPaymentStatus(rs.getString("payment_status"));
-				p.setPaymentDate(rs.getDate("payment_date"));
+				p.setPaymentDate(rs.getObject("payment_date", LocalDateTime.class));
 
 				paymentList.add(p);
 			}
@@ -120,8 +114,7 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 	public void updatePayment(Payment p) {
 
 		String query = "UPDATE PAYMENT SET booking_id=?, amount=?, "
-				+ "payment_mode=?, payment_status=?, payment_date=? "
-				+ "WHERE payment_id=?";
+				+ "payment_mode=?, payment_status=?, payment_date=? " + "WHERE payment_id=?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -130,16 +123,10 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 			ps.setDouble(2, p.getAmount());
 			ps.setString(3, p.getPaymentMode());
 			ps.setString(4, p.getPaymentStatus());
-			ps.setDate(5, p.getPaymentDate());
+			ps.setObject(5, p.getPaymentDate());
 			ps.setInt(6, p.getPaymentId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Payment updated successfully");
-			} else {
-				System.out.println("Payment not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -157,16 +144,58 @@ public class PaymentsDAOImpl implements PaymentsDAO {
 
 			ps.setInt(1, p.getPaymentId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Payment deleted successfully");
-			} else {
-				System.out.println("Payment not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void updatePaymentStatus(Integer paymentId, String status) {
+		String query = "UPDATE PAYMENT SET  payment_status=? where payment_id=? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, status);
+			ps.setInt(2, paymentId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public Payment findByBookingId(Integer paymentId) {
+
+		String query = "SELECT * FROM PAYMENT WHERE booking_id=? ";
+		Payment p = null;
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setInt(1, paymentId);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				p = new Payment();
+
+				p.setPaymentId(rs.getInt("payment_id"));
+				p.setBookingId(rs.getInt("booking_id"));
+				p.setAmount(rs.getDouble("amount"));
+				p.setPaymentMode(rs.getString("payment_mode"));
+				p.setPaymentStatus(rs.getString("payment_status"));
+				p.setPaymentDate(rs.getObject("payment_date", LocalDateTime.class));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return p;
+	}
+
 }

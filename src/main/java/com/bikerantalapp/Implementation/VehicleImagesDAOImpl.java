@@ -110,9 +110,7 @@ public class VehicleImagesDAOImpl implements VehicleImagesDAO {
 	@Override
 	public void updateImage(VehicleImage vi) {
 
-		String query = "UPDATE VEHICLE_IMAGES "
-				+ "SET vehicle_id=?, path=? "
-				+ "WHERE image_id=?";
+		String query = "UPDATE VEHICLE_IMAGES " + "SET vehicle_id=?, path=? " + "WHERE image_id=?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -121,13 +119,7 @@ public class VehicleImagesDAOImpl implements VehicleImagesDAO {
 			ps.setString(2, vi.getPath());
 			ps.setInt(3, vi.getImageId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Image updated successfully");
-			} else {
-				System.out.println("Image not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -145,13 +137,7 @@ public class VehicleImagesDAOImpl implements VehicleImagesDAO {
 
 			ps.setInt(1, vi.getImageId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Image deleted successfully");
-			} else {
-				System.out.println("Image not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -38,13 +38,7 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 			ps.setBoolean(8, v.getAvailable());
 			ps.setString(9, v.getImagePath());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Vehicle registered successfully");
-			} else {
-				System.out.println("Vehicle registration failed");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,10 +124,8 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 	@Override
 	public void updateVehicle(Vehicle v) {
 
-		String query = "UPDATE VEHICLES SET vehicle_type=?, model=?, "
-				+ "registration_no=?, fuel_type=?, top_speed=?, "
-				+ "price_per_day=?, deposit_fee=?, available=?, image_path=? "
-				+ "WHERE vehicle_id=?";
+		String query = "UPDATE VEHICLES SET vehicle_type=?, model=?, " + "registration_no=?, fuel_type=?, top_speed=?, "
+				+ "price_per_day=?, deposit_fee=?, available=?, image_path=? " + "WHERE vehicle_id=?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -146,17 +138,11 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 			ps.setDouble(6, v.getPricePerDay());
 			ps.setDouble(7, v.getDepositFee());
 			ps.setBoolean(8, v.getAvailable());
-		    ps.setString(9, v.getImagePath());
+			ps.setString(9, v.getImagePath());
 
 			ps.setInt(10, v.getVehicleId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Vehicle updated successfully");
-			} else {
-				System.out.println("Vehicle not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -174,16 +160,26 @@ public class VehiclesDAOImpl implements VehiclesDAO {
 
 			ps.setInt(1, v.getVehicleId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Vehicle deleted successfully");
-			} else {
-				System.out.println("Vehicle not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void updateVehicleStatus(Integer vehicleId, Boolean status) {
+		String query = "UPDATE vehicle SET  available=? where vehicle_id=? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setBoolean(1, status);
+			ps.setInt(2, vehicleId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }

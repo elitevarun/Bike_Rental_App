@@ -172,7 +172,8 @@ if (vehicle == null) {
 
 						<div>
 
-							<label> Start Date </label> <input id="startDate" type="date"
+							<label> Start Date </label> 
+							<input id="startDate" type="date"
 								name="startDate" required
 								class="w-full mt-2 p-4 rounded-xl bg-slate-800 border border-slate-700">
 
@@ -180,7 +181,8 @@ if (vehicle == null) {
 
 						<div class="mt-6">
 
-							<label> End Date </label> <input id="endDate" type="date"
+							<label> End Date </label> 
+							<input id="endDate" type="date"
 								name="endDate" required
 								class="w-full mt-2 p-4 rounded-xl bg-slate-800 border border-slate-700">
 

@@ -24,7 +24,7 @@ public class Login extends HttpServlet {
 		AdminsDAO adao = new AdminsDAOImpl();
 		User u = udao.findByMailAndPassword(req.getParameter("email"), req.getParameter("password"));
 		Admin a = adao.findByMailAndPassword(req.getParameter("email"), req.getParameter("password"));
-		System.out.println(a);
+	
 		HttpSession session = req.getSession();
 		if (u != null && u.getEmail().equals(req.getParameter("email"))
 				&& u.getPassword().equals(req.getParameter("password"))) {

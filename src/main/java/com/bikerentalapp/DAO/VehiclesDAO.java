@@ -15,4 +15,7 @@ public interface VehiclesDAO {
 	void updateVehicle (Vehicle v);
 	
 	void deleteVehicle (Vehicle v);
+	
+	
+	void updateVehicleStatus(Integer vehicleId, Boolean status);
 }

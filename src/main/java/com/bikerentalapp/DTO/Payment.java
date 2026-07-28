@@ -1,7 +1,6 @@
 package com.bikerentalapp.DTO;
 
-import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Payment {
 
@@ -10,9 +9,28 @@ public class Payment {
 	private Double amount;
 	private String paymentMode;
 	private String paymentStatus;
-	private Date paymentDate;
+	private LocalDateTime paymentDate;
 	
 	
+	private String bookingStatus;
+	private Boolean available;
+	
+	
+	
+	
+	
+	public String getBookingStatus() {
+		return bookingStatus;
+	}
+	public void setBookingStatus(String bookingStatus) {
+		this.bookingStatus = bookingStatus;
+	}
+	public Boolean getAvailable() {
+		return available;
+	}
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
 	public Integer getPaymentId() {
 		return paymentId;
 	}
@@ -43,10 +61,10 @@ public class Payment {
 	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
-	public Date getPaymentDate() {
+	public LocalDateTime getPaymentDate() {
 		return paymentDate;
 	}
-	public void setPaymentDate(Date paymentDate) {
+	public void setPaymentDate(LocalDateTime paymentDate) {
 		this.paymentDate = paymentDate;
 	}
 	

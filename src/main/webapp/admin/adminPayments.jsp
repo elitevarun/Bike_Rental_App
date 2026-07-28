@@ -284,9 +284,8 @@ if (paymentList == null) {
 								<td class="p-5">
 
 
-									<form action="../PaymentController" method="post"
+									<form action="${pageContext.request.contextPath}/PaymentSave?payment_id=<%=payment.getPaymentId() %>" method="post"
 										class="flex gap-3">
-
 
 
 										<input type="hidden" name="action" value="updateStatus">
@@ -294,7 +293,8 @@ if (paymentList == null) {
 
 
 										<input type="hidden" name="paymentId"
-											value="<%=payment.getPaymentId()%>"> <select
+											value="<%=payment.getPaymentId()%>"> 
+											<select
 											name="status" class="bg-slate-800 rounded-lg p-2">
 
 
@@ -325,7 +325,7 @@ if (paymentList == null) {
 
 
 
-										<button
+										<button type="submit"
 											class="bg-orange-500 hover:bg-orange-600 px-4 rounded-lg">
 
 											Save</button>

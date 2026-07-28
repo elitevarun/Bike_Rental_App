@@ -16,4 +16,8 @@ public interface PaymentsDAO {
 	void updatePayment (Payment p);
 	
 	void deletePayment (Payment p);
+	
+	void updatePaymentStatus(Integer paymentId, String status);
+	
+	Payment findByBookingId (Integer bookingId);
 }

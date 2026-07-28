@@ -71,11 +71,11 @@ if (vehicleList == null) {
 
 					📖 Manage Bookings </a> 
 					<a
-					href="../PaymentController?action=adminPayments"
+					href="${pageContext.request.contextPath}/admin/adminPayments.jsp?action=adminPayments"
 					class="flex items-center gap-4 px-8 py-5 hover:bg-slate-800">
 
 					💳 Manage Payments </a> 
-					<a href="../UserController?action=allUsers"
+					<a href="${pageContext.request.contextPath}/admin/adminUsers.jsp?action=allUsers"
 					class="flex items-center gap-4 px-8 py-5 hover:bg-slate-800">
 
 					👥 Manage Users </a>

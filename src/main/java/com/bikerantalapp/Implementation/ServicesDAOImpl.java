@@ -34,13 +34,7 @@ public class ServicesDAOImpl implements ServicesDAO {
 			ps.setString(5, s.getRemarks());
 			ps.setDate(6, s.getNextServiceDate());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Service added successfully");
-			} else {
-				System.out.println("Service not added");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -119,8 +113,7 @@ public class ServicesDAOImpl implements ServicesDAO {
 	public void updateService(Service s) {
 
 		String query = "UPDATE SERVICE SET vehicle_id=?, service_date=?, "
-				+ "service_type=?, service_cost=?, remarks=?, next_service_date=? "
-				+ "WHERE service_id=?";
+				+ "service_type=?, service_cost=?, remarks=?, next_service_date=? " + "WHERE service_id=?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -133,13 +126,7 @@ public class ServicesDAOImpl implements ServicesDAO {
 			ps.setDate(6, s.getNextServiceDate());
 			ps.setInt(7, s.getServiceId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Service updated successfully");
-			} else {
-				System.out.println("Service not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -156,13 +143,7 @@ public class ServicesDAOImpl implements ServicesDAO {
 
 			ps.setInt(1, s.getServiceId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("Service deleted successfully");
-			} else {
-				System.out.println("Service not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

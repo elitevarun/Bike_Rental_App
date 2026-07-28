@@ -1,4 +1,5 @@
 
+<%@page import="java.time.LocalDateTime"%>
 <%@page import="com.bikerantalapp.Implementation.PaymentsDAOImpl"%>
 <%@page import="com.bikerentalapp.DAO.PaymentsDAO"%>
 <%@page import="com.bikerantalapp.Implementation.BookingsDAOImpl"%>
@@ -29,6 +30,9 @@ if (booking == null) {
 	response.sendRedirect("../BookingController?action=myBookings");
 	return;
 }
+
+
+ LocalDateTime currentDateTime = LocalDateTime.now(); 
 %>
 
 <!DOCTYPE html>
@@ -147,7 +151,9 @@ if (booking == null) {
 
 								</div>
 
-							</label> <label
+							</label>
+							
+							 <label
 								class="payment-option flex items-center gap-5 bg-slate-800 rounded-2xl p-5 cursor-pointer border border-transparent hover:border-orange-500 transition">
 
 								<input type="radio" name="paymentMode" value="Card">
@@ -160,7 +166,10 @@ if (booking == null) {
 
 								</div>
 
-							</label> <label
+							</label> 
+							
+							
+							<label
 								class="payment-option flex items-center gap-5 bg-slate-800 rounded-2xl p-5 cursor-pointer border border-transparent hover:border-orange-500 transition">
 
 								<input type="radio" name="paymentMode" value="Net Banking">
@@ -189,6 +198,15 @@ if (booking == null) {
 							</label>
 
 						</div>
+						
+						
+						<input type="hidden"
+							name="status" value="pending">
+					
+						<input type="hidden"
+							name="payment_date" value="<%=currentDateTime%>">	
+						
+						
 
 						<button type="submit"
 							class="w-full mt-10 bg-orange-500 hover:bg-orange-600 py-4 rounded-xl text-xl font-semibold transition">

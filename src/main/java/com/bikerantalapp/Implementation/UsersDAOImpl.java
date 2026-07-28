@@ -11,7 +11,6 @@ import com.bikerentalapp.DAO.UsersDAO;
 import com.bikerentalapp.DTO.User;
 import com.bikerentalapp.utitly.Connector;
 
-
 public class UsersDAOImpl implements UsersDAO {
 
 	private Connection con;
@@ -37,13 +36,7 @@ public class UsersDAOImpl implements UsersDAO {
 			ps.setString(6, u.getAddress());
 			ps.setString(7, u.getDrivingLicenseNo());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("User registered successfully");
-			} else {
-				System.out.println("User registration failed");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -126,8 +119,7 @@ public class UsersDAOImpl implements UsersDAO {
 	@Override
 	public void updateUser(User u) {
 
-		String query = "UPDATE USERS SET first_name=?, last_name=?,  "
-				+ "phone=?, address=?, driving_license_no=? "
+		String query = "UPDATE USERS SET first_name=?, last_name=?,  " + "phone=?, address=?, driving_license_no=? "
 				+ "WHERE user_id=?";
 
 		try {
@@ -142,13 +134,7 @@ public class UsersDAOImpl implements UsersDAO {
 			ps.setString(5, u.getDrivingLicenseNo());
 			ps.setInt(6, u.getUserId());
 
-			int res = ps.executeUpdate();
-
-			if (res > 0) {
-				System.out.println("User updated successfully");
-			} else {
-				System.out.println("User not found");
-			}
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -166,18 +152,17 @@ public class UsersDAOImpl implements UsersDAO {
 
 			ps.setInt(1, u.getUserId());
 
-		    ps.executeUpdate();
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	
-	//find by email and password
+	// find by email and password
 	@Override
 	public User findByMailAndPassword(String mail, String password) {
-		
+
 		String query = "select * from users where email=? and password =?";
 		User u = null;
 		try {
@@ -196,7 +181,7 @@ public class UsersDAOImpl implements UsersDAO {
 				u.setPassword(rs.getString("password"));
 				u.setAddress(rs.getString("address"));
 				u.setDrivingLicenseNo(rs.getString("driving_license_no"));
-				
+
 			}
 		} catch (SQLException e3) {
 

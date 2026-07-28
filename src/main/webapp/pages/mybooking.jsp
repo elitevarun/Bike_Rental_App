@@ -17,7 +17,7 @@ BookingsDAO bdao=new BookingsDAOImpl();
 List<Booking> bookingList = bdao.getBookingByUser(user.getUserId());
 
 if (bookingList == null) {
-	response.sendRedirect(request.getContextPath() +"/pages/vehicle.jsp");
+	response.sendRedirect(request.getContextPath() +"/pages/userdashboard.jsp");
 	return;
 }
 %>
@@ -68,13 +68,15 @@ if (bookingList == null) {
 			%>
 
 			<div class="bg-green-600 rounded-xl p-5 mb-10">Payment
-				Successful! Your booking has been confirmed.</div>
+				Successful! Your booking will be confirme shortly.</div>
 
 			<%
 			}
 			%>
-
-
+     <%String msgs=request.getParameter("msgs"); %>
+<%if(msgs!=null){ %>
+<div class="bg-green-600 rounded-xl p-5 mb-10"><%=msgs %></div>
+<%} %>
 
 			<div class="bg-slate-900 rounded-3xl overflow-hidden shadow-xl">
 
@@ -238,7 +240,7 @@ if (bookingList == null) {
 									%>
 
 									<a
-										href="../BookingController?action=cancel&id=<%=booking.getBookingId()%>"
+										href="${pageContext.request.contextPath}/userBookingCancel?action=cancel&id=<%=booking.getBookingId()%>"
 										onclick="return confirm('Cancel this booking?')"
 										class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg">
 

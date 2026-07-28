@@ -17,5 +17,9 @@ public interface BookingsDAO {
 	void deleteBooking (Booking b);
 	
 	List<Booking> getBookingByUser(Integer userId);
+	
 	List<Booking> getBooking();
+	
+	void udpateBookingStatus(Integer bookingId, String status);
+	
 }
