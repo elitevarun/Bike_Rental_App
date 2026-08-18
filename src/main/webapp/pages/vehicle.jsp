@@ -62,8 +62,7 @@ List<Vehicle> vehicleList = vdao.findAll();
 	<!-- ================================================= -->
 	<!-- SEARCH + FILTER -->
 	<!-- ================================================= -->
-
-	<section class="pb-14">
+<!--  <section class="pb-14">
 
 		<div class="max-w-7xl mx-auto px-6">
 
@@ -71,7 +70,7 @@ List<Vehicle> vehicleList = vdao.findAll();
 
 				<div class="grid lg:grid-cols-4 gap-5">
 
-					<!-- Search -->
+					<!-- Search --
 
 					<div class="lg:col-span-2">
 
@@ -80,7 +79,7 @@ List<Vehicle> vehicleList = vdao.findAll();
 
 					</div>
 
-					<!-- Type -->
+					<!-- Type --
 
 					<div>
 
@@ -103,7 +102,7 @@ List<Vehicle> vehicleList = vdao.findAll();
 
 					</div>
 
-					<!-- Availability -->
+					<!-- Availability --
 
 					<div>
 
@@ -126,7 +125,7 @@ List<Vehicle> vehicleList = vdao.findAll();
 
 		</div>
 
-	</section>
+	</section>      -->
 
 	<!-- ================================================= -->
 	<!-- VEHICLE GRID START -->

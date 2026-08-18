@@ -144,10 +144,10 @@ User user = (User) session.getAttribute("user");
 
 			<hr class="border-slate-700">
 
-			<a href="../pages/login.jsp"
+			<a href="${pageContext.request.contextPath}/pages/login.jsp"
 				class="border border-orange-500 rounded-lg py-2 text-center text-orange-500">
 
-				Login </a> <a href="../pages/register.jsp"
+				Login </a> <a href="${pageContext.request.contextPath}/pages/register.jsp"
 				class="bg-orange-500 rounded-lg py-2 text-center text-white">
 
 				Register </a>

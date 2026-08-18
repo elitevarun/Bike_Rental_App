@@ -52,14 +52,14 @@ pageEncoding="UTF-8"%>
                 <ul class="space-y-3">
 
                     <li>
-                        <a href="../index.jsp"
+                        <a href="${pageContext.request.contextPath}/index.jsp"
                            class="hover:text-orange-500 transition">
                             Home
                         </a>
                     </li>
 
                     <li>
-                        <a href="../pages/bikes.jsp"
+                        <a href="${pageContext.request.contextPath}/pages/vehicle.jsp"
                            class="hover:text-orange-500 transition">
                             Browse Bikes
                         </a>
@@ -115,7 +115,7 @@ pageEncoding="UTF-8"%>
 
             </div>
 
-            <!-- Newsletter -->
+            <!-- Newsletter Furture Implementation
 
             <div>
 
@@ -131,7 +131,7 @@ pageEncoding="UTF-8"%>
 
                 </p>
 
-                <form>
+                <form >
 
                     <input
                         type="email"
@@ -147,7 +147,7 @@ pageEncoding="UTF-8"%>
 
                 </form>
 
-            </div>
+            </div> -->
 
         </div>
 
@@ -163,7 +163,7 @@ pageEncoding="UTF-8"%>
 
                 </p>
 
-                <!-- Social -->
+                <!-- Social 
 
                 <div class="flex gap-4">
 
@@ -195,7 +195,7 @@ pageEncoding="UTF-8"%>
 
                     </a>
 
-                </div>
+                </div> -->
 
             </div>
 

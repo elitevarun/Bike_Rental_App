@@ -26,19 +26,33 @@
 
 				<!-- Left Side -->
 
-				<div
-					class="hidden lg:flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-700 p-16">
+				<!-- Left Side -->
 
-					<div class="text-center">
+				<div class="hidden lg:block relative overflow-hidden">
 
-						<img src="../assets/images/login-bike.png"
-							class="w-full max-w-md mx-auto">
+					<!-- Full Background Image -->
+					<img src="https://i.ibb.co/k2qBjBHg/registerimage.png"
+						alt="Bike Rental"
+						class="absolute inset-0 w-full h-full object-cover">
 
-						<h2 class="text-4xl font-bold text-white mt-8">Ride Beyond
-							Limits</h2>
+					<!-- Dark Overlay -->
+					<div class="absolute inset-0 bg-black/50"></div>
 
-						<p class="text-orange-100 mt-5 leading-8">Premium bikes for
-							unforgettable journeys.</p>
+					<!-- Text On Image -->
+					<div
+						class="relative z-10 h-full flex items-center justify-center p-16">
+
+						<div class="text-center">
+
+							<h2 class="text-5xl font-bold text-white">Ride Beyond Limits
+							</h2>
+
+							<p
+								class="text-orange-100 mt-5 text-lg leading-8 max-w-md mx-auto">
+								Premium bikes for unforgettable journeys. Experience freedom on
+								every road.</p>
+
+						</div>
 
 					</div>
 
@@ -53,9 +67,22 @@
 					<p class="text-slate-400 mt-3">Login to continue your journey.
 
 					</p>
+					<%
+					String regmsg = (String) request.getParameter("regmsg");
+					%>
+					<%
+					if (regmsg != null) {
+					%>
+					<p class="text-slate-400 mt-3">
+						<%
 
-					<form action="../login" method="post"
-						class="mt-10 space-y-6">
+						%>>
+						<%=regmsg%>
+					</p>
+					<%
+					}
+					%>
+					<form action="../login" method="post" class="mt-10 space-y-6">
 
 						<div>
 

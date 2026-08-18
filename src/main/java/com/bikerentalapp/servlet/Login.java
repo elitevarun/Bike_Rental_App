@@ -24,15 +24,31 @@ public class Login extends HttpServlet {
 		AdminsDAO adao = new AdminsDAOImpl();
 		User u = udao.findByMailAndPassword(req.getParameter("email"), req.getParameter("password"));
 		Admin a = adao.findByMailAndPassword(req.getParameter("email"), req.getParameter("password"));
-	
+
 		HttpSession session = req.getSession();
 		if (u != null && u.getEmail().equals(req.getParameter("email"))
-				&& u.getPassword().equals(req.getParameter("password"))) {
+				&& u.getPassword().equals(req.getParameter("password"))
+				|| a != null && a.getEmail().equals(req.getParameter("email"))
+						&& a.getPassword().equals(req.getParameter("password"))
+						&& a.getRole().equalsIgnoreCase("admin")) {
+			if (u != null) {
 
-			session.setAttribute("user", u);
-			resp.sendRedirect("./pages/userdashboard.jsp");
-		} 
-		else if (a != null) {
+				session.setAttribute("user", u);
+				resp.sendRedirect(req.getContextPath()+"/pages/userdashboard.jsp");
+			} 
+			else if (a != null) {
+				session.setAttribute("admin", a);
+				resp.sendRedirect(req.getContextPath() + "/admin/admindashboard.jsp");
+			}
+		}
+
+		else {
+
+			resp.sendRedirect(req.getContextPath() + "/pages/login.jsp?message=Invalid+Credential");
+
+		}
+
+//	else if (a != null) {
 //			if (a.getEmail().equals(req.getParameter("email")) && a.getPassword().equals(req.getParameter("password"))
 //					&& a.getRole().equalsIgnoreCase("super_admin")) {
 //				session.setAttribute("superAdmin", a);
@@ -44,20 +60,7 @@ public class Login extends HttpServlet {
 //				session.setAttribute("managerAdmin", a);
 //				resp.sendRedirect("./pages/manageradmindashboard.jsp");
 //			} 
-			if (a.getEmail().equals(req.getParameter("email"))
-					&& a.getPassword().equals(req.getParameter("password")) 
-					&& a.getRole().equalsIgnoreCase("admin")) {
-				session.setAttribute("admin", a);
-				resp.sendRedirect("./admin/admindashboard.jsp");
-			}
-		}
 
-		
-
-		else {
-			req.setAttribute("msg", "Data Not Found");
-			req.getRequestDispatcher("/pages/login.jsp").forward(req, resp);
-		}
 	}
 
 }

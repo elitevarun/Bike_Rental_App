@@ -253,7 +253,7 @@
 						<div class="grid grid-cols-2 gap-3 mt-6">
 
 							<div class="bg-slate-700 p-3 rounded-xl text-center">
-								<%=v2.getModel()%>
+								<%=v2.getFuelType()%>
 							</div>
 
 							<div class="bg-slate-700 p-3 rounded-xl text-center">
@@ -326,7 +326,7 @@
 						<div class="grid grid-cols-2 gap-3 mt-6">
 
 							<div class="bg-slate-700 p-3 rounded-xl text-center">
-								<%=v3.getModel()%>
+								<%=v3.getFuelType()%>
 							</div>
 
 							<div class="bg-slate-700 p-3 rounded-xl text-center">
@@ -400,7 +400,7 @@
 						<div class="grid grid-cols-2 gap-3 mt-6">
 
 							<div class="bg-slate-700 p-3 rounded-xl text-center">
-								<%=v4.getModel()%>
+								<%=v4.getFuelType()%>
 							</div>
 
 							<div class="bg-slate-700 p-3 rounded-xl text-center">

@@ -512,7 +512,7 @@ Long countPayments =pdao.findAll()
 
 									<td class="p-5">
 
-										<form action="../PaymentController" method="post"
+										<form action="${pageContext.request.contextPath}/PaymentSave?payment_id=<%=payment.getPaymentId() %>" method="post"
 											class="flex gap-3">
 
 											<input type="hidden" name="action" value="updateStatus">
@@ -543,7 +543,7 @@ Long countPayments =pdao.findAll()
 
 											</select>
 
-											<button
+											<button type="submit"
 												class="bg-orange-500 hover:bg-orange-600 px-4 rounded-lg">
 
 												Save</button>
